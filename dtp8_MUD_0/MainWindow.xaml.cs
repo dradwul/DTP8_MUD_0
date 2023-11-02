@@ -18,6 +18,7 @@ namespace dtp8_MUD_0
 {
     class Room
     {
+        //TBD: privatisera attribut
         // Constants:
         public const int North = 0;
         public const int East = 1;
@@ -64,6 +65,7 @@ namespace dtp8_MUD_0
             InitializeComponent();
 
             // Init Rooms here:
+            // Här läggs info för varje rum
             Room R;
             R = new Room(0, "Startrummet");
             R.SetStory("Du står i ett rum med rött tegel. Väggarna fladdrar i facklornas sken. Du ser en hög med tyg nere till vänster. ");
@@ -81,6 +83,7 @@ namespace dtp8_MUD_0
             DisplayCurrentRoom();
         }
 
+        //Här nedan ligger static-funktion för att registrera knapptryckningar
         private void ApplicationKeyPress(object sender, KeyEventArgs e)
         {
             string output = "Key pressed: ";
@@ -93,6 +96,9 @@ namespace dtp8_MUD_0
             {
                 System.Windows.Application.Current.Shutdown();
             }
+
+            //NYI: lägg till knapptryckningarna som saknas
+
             else if(e.Key == Key.Up)
             {
                 currentRoom = labyrinth[currentRoom].GetNorth();
@@ -101,6 +107,7 @@ namespace dtp8_MUD_0
         }
         private void DisplayCurrentRoom()
         {
+            //TODO: Lägg till Tomkis bilder i program-mappen
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             Room R = labyrinth[currentRoom];
             string bitmapFileName = $"{baseDir}/{R.imageFile}";
